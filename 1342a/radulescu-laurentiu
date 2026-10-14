@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Radulescu Laurentiu – laboratoare</title>
+</head>
+<body>
+  <h1>Radulescu Laurentiu</h1>
+  <p>Programarea aplicațiilor web – subgrupa 1342A</p>
+
+  <h2>Laboratoare</h2>
+  <ul>
+    <li><a href="lab1/index.html">Laboratorul 1 – HTML</a></li>
+    <li><a href="lab2/index.html">Laboratorul 2 – HTML si CSS</a></li>
+    <li><a href="lab3/index.html">Laboratorul 3 – CSS multipage</a></li>
+  </ul>
+</body>
+</html>
