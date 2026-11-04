@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Bonus - Galerie de imagini</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            padding: 40px;
+            color: #24304a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(40, 50, 90, 0.12);
+            text-align: center;
+        }
+
+        h1 {
+            color: #263c68;
+            margin-bottom: 25px;
+        }
+
+        #imagine {
+            width: 400px;
+            height: 300px;
+            max-width: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #e0e6f5;
+        }
+
+        #text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #405a91;
+            margin: 20px 0;
+        }
+
+        .gallery-button {
+            padding: 12px 24px;
+            margin: 5px;
+            background-color: #526da8;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery-button:hover {
+            background-color: #354e86;
+            transform: translateY(-2px);
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405a91;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>★ Galerie de imagini – Bonus</h1>
+
+        <img id="imagine" src="Img/pisici.jpg"
+             alt="Imagine din galerie" width="400" height="300">
+
+        <p id="text">Imaginea 1 din 4</p>
+
+        <button type="button" class="gallery-button" onclick="inapoi()">
+            ← Înapoi
+        </button>
+
+        <button type="button" class="gallery-button" onclick="inainte()">
+            Înainte →
+        </button>
+
+        <br>
+
+        <a href="index.html" class="back">
+            ← Înapoi la laboratorul 6
+        </a>
+
+    </div>
+
+    <script>
+        var imagini = [
+            "Img/pisici.jpg",
+            "Img/munti.jpg",
+            "Img/caini.jpg",
+            "Img/mare.jpg"
+        ];
+
+        var pozitie = 0;
+
+        function afiseazaImaginea() {
+            document.getElementById("imagine").src = imagini[pozitie];
+
+            document.getElementById("text").innerHTML =
+                "Imaginea " + (pozitie + 1) + " din 4";
+        }
+
+        function inainte() {
+            pozitie++;
+
+            if (pozitie >= imagini.length) {
+                pozitie = 0;
+            }
+
+            afiseazaImaginea();
+        }
+
+        function inapoi() {
+            pozitie--;
+
+            if (pozitie < 0) {
+                pozitie = imagini.length - 1;
+            }
+
+            afiseazaImaginea();
+        }
+    </script>
+
+</body>
+</html>

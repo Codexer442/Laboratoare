@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercitiul 4 - Culori</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            padding: 40px;
+            color: #24304a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(40, 50, 90, 0.12);
+        }
+
+        h1 {
+            color: #263c68;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        h1:hover {
+            color: #526da8;
+        }
+
+        .text {
+            font-size: 18px;
+            line-height: 1.8;
+            padding: 15px;
+            background-color: #f0f3ff;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .info {
+            color: #737e96;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405a91;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 onclick="schimbaCuloareaTextului()">
+            Modificarea culorii titlului
+        </h1>
+
+        <p class="text" onclick="schimbaFundalul()">
+            Acesta este primul rand de text.<br>
+            Acesta este al doilea rand de text.<br>
+            Acesta este al treilea rand de text.
+        </p>
+
+        <p class="info">
+            Apasati pe titlu pentru a-i schimba culoarea.
+            Apasati pe paragraf pentru a-i modifica fundalul.
+        </p>
+
+        <a href="index.html" class="back">
+            ← Înapoi la laboratorul 6
+        </a>
+
+    </div>
+
+    <script>
+        function schimbaCuloareaTextului() {
+            var c = prompt("Introduceti culoarea textului titlului:");
+
+            if (c === null || c === "") {
+                return;
+            }
+
+            if (CSS.supports("color", c)) {
+                document.querySelector("h1").style.color = c;
+            } else {
+                alert("Culoarea introdusa nu este valida!");
+            }
+        }
+
+        function schimbaFundalul() {
+            var c = prompt("Introduceti culoarea de fundal a paragrafului:");
+
+            if (c === null || c === "") {
+                return;
+            }
+
+            if (CSS.supports("color", c)) {
+                document.querySelector(".text").style.backgroundColor = c;
+            } else {
+                alert("Culoarea introdusa nu este valida!");
+            }
+        }
+    </script>
+
+</body>
+</html>

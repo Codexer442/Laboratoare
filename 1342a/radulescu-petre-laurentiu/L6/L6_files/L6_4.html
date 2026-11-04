@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercitiul 6 - Modificare imagini</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            padding: 40px;
+            color: #24304a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(40, 50, 90, 0.12);
+        }
+
+        h1 {
+            color: #263c68;
+        }
+
+        h3 {
+            color: #526da8;
+            line-height: 1.5;
+        }
+
+        .image-section {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f5f6ff;
+            border-radius: 12px;
+        }
+
+        .image-section img {
+            border-radius: 10px;
+            border: 2px solid #e0e6f5;
+            object-fit: cover;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce2f0;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405a91;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Exercițiul 6 – Modificarea imaginilor</h1>
+
+        <h3>Utilizati Javascript si HTML DOM pentru a inlocui imaginile de mai jos asa cum este indicat in textele de deasupra lor</h3>
+
+        <div class="image-section">
+            <h3>Pisici</h3>
+            <hr />
+            <img class="animal" src="Pesti.jpg" alt="Pisici" width="160" height="120">
+        </div>
+
+        <div class="image-section">
+            <h3>Munti</h3>
+            <hr />
+            <img class="peisaj" src="desert.jpg" alt="Munti" width="160" height="120">
+        </div>
+
+        <div class="image-section">
+            <h3>Caini</h3>
+            <hr />
+            <img class="animal" src="egrete.jpg" alt="Caini" width="160" height="120">
+        </div>
+
+        <div class="image-section">
+            <h3>Mare</h3>
+            <hr />
+            <img class="peisaj" src="jungla.jpg" alt="Mare" width="160" height="120">
+        </div>
+
+        <a href="index.html" class="back">
+            ← Înapoi la laboratorul 6
+        </a>
+
+    </div>
+
+    <script>
+        // Utilizati getElementsByClassName() pentru a modifica imaginile pentru a se potrivi cu textele de deasupra lor!
+
+        var animale = document.getElementsByClassName("animal");
+
+        animale[0].src = "Img/pisici.jpg";
+        animale[1].src = "Img/caini.jpg";
+
+        var peisaje = document.getElementsByClassName("peisaj");
+
+        peisaje[0].src = "Img/munti.jpg";
+        peisaje[1].src = "Img/mare.jpg";
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercitiul 6 - Modificare imagini cu evenimente</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            padding: 40px;
+            color: #24304a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(40, 50, 90, 0.12);
+        }
+
+        h1 {
+            color: #263c68;
+        }
+
+        h3 {
+            color: #526da8;
+            line-height: 1.5;
+        }
+
+        .image-section {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f5f6ff;
+            border-radius: 12px;
+        }
+
+        .image-section img {
+            border-radius: 10px;
+            border: 2px solid #e0e6f5;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce2f0;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405a91;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Exercițiul 6 – Imagini și evenimente</h1>
+
+        <h3>Utilizati Javascript si HTML DOM pentru a inlocui imaginile de mai jos asa cum este indicat in textele de deasupra lor</h3>
+
+        <div class="image-section">
+            <h3>La click vor aparea Pisici</h3>
+            <hr />
+            <img class="animal" src="Pesti.jpg" alt="Niste pesti" width="160" height="120">
+        </div>
+
+        <div class="image-section">
+            <h3>La mouseover vor aparea Munti</h3>
+            <hr />
+            <img class="peisaj" src="desert.jpg" alt="Un desert" width="160" height="120">
+        </div>
+
+        <div class="image-section">
+            <h3>La click vor aparea Caini</h3>
+            <hr />
+            <img class="animal" src="egrete.jpg" alt="Niste egrete" width="160" height="120">
+        </div>
+
+        <div class="image-section">
+            <h3>La mouseout va aparea o Mare</h3>
+            <hr />
+            <img class="peisaj" src="jungla.jpg" alt="O jungla" width="160" height="120">
+        </div>
+
+        <a href="index.html" class="back">
+            ← Înapoi la laboratorul 6
+        </a>
+
+    </div>
+
+    <script>
+        // Utilizati getElementsByClassName() pentru a modifica imaginile la evenimente!
+
+        var animale = document.getElementsByClassName("animal");
+        var peisaje = document.getElementsByClassName("peisaj");
+
+        animale[0].onclick = function() {
+            this.src = "Img/pisici.jpg";
+        };
+
+        peisaje[0].onmouseover = function() {
+            this.src = "Img/munti.jpg";
+        };
+
+        animale[1].onclick = function() {
+            this.src = "Img/caini.jpg";
+        };
+
+        peisaje[1].onmouseout = function() {
+            this.src = "Img/mare.jpg";
+        };
+
+    </script>
+
+</body>
+</html>

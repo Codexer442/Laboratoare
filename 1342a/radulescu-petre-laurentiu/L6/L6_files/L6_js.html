@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercitiul 7 - Creare elemente cu JavaScript</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            padding: 40px;
+            color: #24304a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(40, 50, 90, 0.12);
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405a91;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // Cream containerul principal
+        var container = document.createElement("div");
+        container.className = "container";
+
+        // Cream titlul
+        var titlu = document.createElement("h1");
+        titlu.innerHTML = "Titlu creat cu JavaScript";
+        titlu.style.color = "blue";
+        titlu.style.fontSize = "36px";
+
+        // Cream paragraful
+        var paragraf = document.createElement("p");
+        paragraf.innerHTML = "Acesta este primul rand.<br>" +
+                             "Acesta este al doilea rand.<br>" +
+                             "Acesta este al treilea rand.";
+
+        paragraf.style.backgroundColor = "yellow";
+        paragraf.style.padding = "15px";
+        paragraf.style.fontSize = "18px";
+
+        // Adaugam elementele in container
+        container.appendChild(titlu);
+        container.appendChild(paragraf);
+
+        // Adaugam butonul de intoarcere
+        var buton = document.createElement("a");
+        buton.href = "index.html";
+        buton.innerHTML = "← Înapoi la laboratorul 6";
+        buton.className = "back";
+
+        container.appendChild(buton);
+
+        // Adaugam containerul in pagina
+        document.body.appendChild(container);
+    </script>
+
+</body>
+</html>

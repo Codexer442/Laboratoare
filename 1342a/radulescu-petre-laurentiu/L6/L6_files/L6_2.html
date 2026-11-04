@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercitiul 5 - getElementsByTagName</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            padding: 40px;
+            color: #24304a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(40, 50, 90, 0.12);
+        }
+
+        h1 {
+            color: #263c68;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.6;
+            padding: 14px;
+            border-radius: 10px;
+            background-color: #f0f3ff;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405a91;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Exercițiul 5 – getElementsByTagName</h1>
+
+        <p>Salutare, <br /> oameni buni! <br /> (De modificat culoarea de background cu js!)</p>
+
+        <p>Folositi metoda <b>getElementsByTagName</b> pentru a modifica culorile indicate in paragrafele alaturate, <br /> precum si titlul paginii !</p>
+
+        <p>Acest text va fi colorat <br />folosind <br /> JavaScript</p>
+
+        <a href="index.html" class="back">
+            ← Înapoi la laboratorul 6
+        </a>
+
+    </div>
+
+    <script>
+        // Utilizati getElementsByTagName() si element.style.color/backgroundColor, precum si document.title!
+
+        var p = document.getElementsByTagName("p");
+
+        p[0].style.backgroundColor = "yellow";
+        p[2].style.color = "blue";
+
+        document.title = "Pagina modificata cu JavaScript";
+    </script>
+
+</body>
+</html>

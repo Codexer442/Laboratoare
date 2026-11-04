@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorul 6 - JavaScript si DOM</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            color: #24304a;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #172b50, #465c9b);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 20px rgba(30, 45, 85, 0.2);
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin: 0 0 12px;
+        }
+
+        .header p {
+            font-size: 17px;
+            color: #dce5ff;
+            margin: 0;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .exercises {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .exercise {
+            background-color: white;
+            padding: 22px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #24304a;
+            box-shadow: 0 4px 12px rgba(40, 50, 90, 0.08);
+            transition: 0.3s;
+            border: 1px solid #e0e6f5;
+        }
+
+        .exercise:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(40, 50, 90, 0.16);
+            border-color: #8299dc;
+        }
+
+        .number {
+            display: inline-block;
+            background-color: #e8edff;
+            color: #4059a3;
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .exercise h3 {
+            margin: 5px 0 8px;
+            font-size: 18px;
+        }
+
+        .exercise p {
+            margin: 0;
+            color: #737e96;
+            font-size: 14px;
+        }
+
+        .bonus {
+            margin-top: 25px;
+            padding: 23px;
+            background: linear-gradient(135deg, #eee7ff, #e3eaff);
+            border: 1px solid #d5c9f4;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #493b78;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .bonus:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 7px 16px rgba(70, 55, 120, 0.12);
+        }
+
+        .bonus h3 {
+            margin: 0 0 8px;
+        }
+
+        .bonus p {
+            margin: 0;
+            color: #71648e;
+            font-size: 14px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405a91;
+        }
+
+        @media (max-width: 600px) {
+            .exercises {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Laboratorul 6</h1>
+            <p>JavaScript și DOM</p>
+            <p>Exerciții practice și aplicații JavaScript</p>
+        </div>
+
+        <h2 class="section-title">Exercițiile laboratorului</h2>
+
+        <div class="exercises">
+
+            <a href="L6_A.html" class="exercise">
+                <span class="number">01</span>
+                <h3>Prompt</h3>
+                <p>Modificarea textului unui paragraf.</p>
+            </a>
+
+            <a href="L6_1.html" class="exercise">
+                <span class="number">02</span>
+                <h3>getElementById</h3>
+                <p>Modificarea paragrafelor folosind ID-ul elementelor.</p>
+            </a>
+
+            <a href="L6_B.html" class="exercise">
+                <span class="number">03</span>
+                <h3>Modificarea paragrafelor</h3>
+                <p>Evenimente și schimbarea textelor.</p>
+            </a>
+
+            <a href="L6_C.html" class="exercise">
+                <span class="number">04</span>
+                <h3>Modificarea culorilor</h3>
+                <p>Schimbarea culorilor textului și fundalului.</p>
+            </a>
+
+            <a href="L6_2.html" class="exercise">
+                <span class="number">05</span>
+                <h3>getElementsByTagName</h3>
+                <p>Modificarea elementelor după numele etichetei.</p>
+            </a>
+
+            <a href="L6_3.html" class="exercise">
+                <span class="number">06</span>
+                <h3>getElementsByClassName</h3>
+                <p>Modificarea elementelor folosind clase CSS.</p>
+            </a>
+
+            <a href="L6_4.html" class="exercise">
+                <span class="number">07</span>
+                <h3>Modificarea imaginilor</h3>
+                <p>Înlocuirea imaginilor la încărcarea paginii.</p>
+            </a>
+
+            <a href="L6_5.html" class="exercise">
+                <span class="number">08</span>
+                <h3>Evenimente și imagini</h3>
+                <p>Modificarea imaginilor la click și mouseover.</p>
+            </a>
+
+            <a href="L6_js.html" class="exercise">
+                <span class="number">09</span>
+                <h3>Crearea elementelor cu JavaScript</h3>
+                <p>Adăugarea dinamică a elementelor în pagină.</p>
+            </a>
+
+        </div>
+
+        <a href="L6_D.html" class="bonus">
+            <h3>★ Exercițiu bonus – Galerie de imagini</h3>
+            <p>Navigare între imagini folosind butoanele Înainte și Înapoi.</p>
+        </a>
+
+        <a href="../../index.html" class="back">
+            ← Înapoi la toate laboratoarele
+        </a>
+
+    </div>
+
+</body>
+</html>
