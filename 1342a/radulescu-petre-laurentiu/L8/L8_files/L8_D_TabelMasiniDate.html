@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabel masini - Date</title>
+</head>
+<body>
+
+<h2>Tabel masini</h2>
+
+<form onsubmit="return adaugaMasina()">
+    <label>Marca:</label>
+    <input type="text" id="marca">
+
+    <label>Model:</label>
+    <input type="text" id="model">
+
+    <label>Culoare:</label>
+    <input type="text" id="culoare">
+
+    <label>An fabricatie:</label>
+    <input type="number" id="anFab">
+
+    <button type="submit">Adauga masina</button>
+</form>
+
+<p id="mesaj"></p>
+
+<button onclick="stergeToate()">Sterge toate</button>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Model</th>
+            <th>Culoare</th>
+            <th>An fabricatie</th>
+        </tr>
+    </thead>
+    <tbody id="tm"></tbody>
+</table>
+
+<script>
+
+var masini2Store = [];
+
+function masina(mk, md, cl, an) {
+    this.marca = mk;
+    this.model = md;
+    this.culoare = cl;
+    this.anFab = an;
+}
+
+masina.prototype.randNou = function() {
+    return "<tr><td>" + this.marca +
+    "</td><td>" + this.model +
+    "</td><td>" + this.culoare +
+    "</td><td>" + this.anFab +
+    "</td></tr>";
+};
+
+function afiseazaMasini() {
+
+    var tabel = document.getElementById("tm");
+    tabel.innerHTML = "";
+
+    for (var i = 0; i < masini2Store.length; i++) {
+        tabel.innerHTML += masini2Store[i].randNou();
+    }
+}
+
+function incarcaMasini() {
+
+    if (localStorage.getItem("carsArrayD") !== null) {
+
+        var masiniStored = JSON.parse(localStorage.getItem("carsArrayD"));
+
+        for (var i = 0; i < masiniStored.length; i++) {
+
+            var mNoua = new masina(
+                masiniStored[i].marca,
+                masiniStored[i].model,
+                masiniStored[i].culoare,
+                masiniStored[i].anFab
+            );
+
+            masini2Store.push(mNoua);
+        }
+    }
+
+    afiseazaMasini();
+}
+
+function valideaza(marca, model, culoare, an) {
+
+    if (marca === "" || model === "" || culoare === "") {
+        return "Completati marca, modelul si culoarea.";
+    }
+
+    var anCurent = new Date().getFullYear();
+
+    if (!Number.isInteger(an) || an < 1900 || an > anCurent) {
+        return "Anul de fabricatie trebuie sa fie intre 1900 si " + anCurent + ".";
+    }
+
+    return "";
+}
+
+function citesteFormular() {
+
+    var marca = document.getElementById("marca").value.trim();
+    var model = document.getElementById("model").value.trim();
+    var culoare = document.getElementById("culoare").value.trim();
+    var an = Number(document.getElementById("anFab").value);
+
+    var eroare = valideaza(marca, model, culoare, an);
+
+    document.getElementById("mesaj").innerHTML = eroare;
+
+    if (eroare !== "") {
+        return null;
+    }
+
+    return new masina(marca, model, culoare, an);
+}
+
+function adaugaMasina() {
+
+    var mNoua = citesteFormular();
+
+    if (mNoua !== null) {
+
+        masini2Store.push(mNoua);
+
+        localStorage.setItem("carsArrayD", JSON.stringify(masini2Store));
+
+        afiseazaMasini();
+
+        document.getElementById("mesaj").innerHTML = "";
+
+        document.getElementById("marca").value = "";
+        document.getElementById("model").value = "";
+        document.getElementById("culoare").value = "";
+        document.getElementById("anFab").value = "";
+    }
+
+    return false;
+}
+
+function stergeToate() {
+
+    masini2Store = [];
+
+    localStorage.removeItem("carsArrayD");
+
+    afiseazaMasini();
+}
+
+incarcaMasini();
+
+</script>
+<a href="./index.html">Înapoi la Lab 8</a>
+</body>
+</html>

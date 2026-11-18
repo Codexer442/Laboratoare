@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabel masini - JSON</title>
+</head>
+<body>
+
+<h2>Tabel masini</h2>
+
+<form onsubmit="return adaugaMasina()">
+    <label>Marca:</label>
+    <input type="text" id="marca">
+
+    <label>Model:</label>
+    <input type="text" id="model">
+
+    <label>Culoare:</label>
+    <input type="text" id="culoare">
+
+    <label>An fabricatie:</label>
+    <input type="number" id="anFab">
+
+    <button type="submit">Adauga masina</button>
+</form>
+
+<p id="mesaj"></p>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Model</th>
+            <th>Culoare</th>
+            <th>An fabricatie</th>
+        </tr>
+    </thead>
+    <tbody id="tm">
+    </tbody>
+</table>
+
+<script>
+
+var m1 = new masina("Opel", "Zafira", "gri", 2015);
+var m2 = new masina("Seat", "Ibiza", "roz", 2018);
+
+document.getElementById("tm").innerHTML =
+    m1.randNou() + m2.randNou();
+
+if (localStorage.masinaN) {
+    var masinaJSON = localStorage.masinaN;
+    var mNoua = JSON.parse(masinaJSON);
+    document.getElementById("tm").innerHTML += mNoua.randNou;
+}
+
+function masina(mk, md, cl, an) {
+    this.marca = mk;
+    this.model = md;
+    this.culoare = cl;
+    this.anFab = an;
+
+    this.randNou = function() {
+        return "<tr><td>" + this.marca +
+        "</td><td>" + this.model +
+        "</td><td>" + this.culoare +
+        "</td><td>" + this.anFab +
+        "</td></tr>";
+    }
+}
+
+function valideaza(marca, model, culoare, an) {
+
+    if (marca === "" || model === "" || culoare === "") {
+        return "Completati marca, modelul si culoarea.";
+    }
+
+    var anCurent = new Date().getFullYear();
+
+    if (!Number.isInteger(an) || an < 1900 || an > anCurent) {
+        return "Anul de fabricatie trebuie sa fie intre 1900 si " + anCurent + ".";
+    }
+
+    return "";
+}
+
+function citesteFormular() {
+
+    var marca = document.getElementById("marca").value.trim();
+    var model = document.getElementById("model").value.trim();
+    var culoare = document.getElementById("culoare").value.trim();
+    var an = Number(document.getElementById("anFab").value);
+
+    var eroare = valideaza(marca, model, culoare, an);
+
+    document.getElementById("mesaj").innerHTML = eroare;
+
+    if (eroare !== "") {
+        return null;
+    }
+
+    return new masina(marca, model, culoare, an);
+}
+
+function adaugaMasina() {
+
+    var mNoua = citesteFormular();
+
+    if (mNoua !== null) {
+
+        document.getElementById("tm").innerHTML += mNoua.randNou();
+
+        mNoua.randNou = mNoua.randNou().toString();
+
+        var myJSON = JSON.stringify(mNoua);
+
+        localStorage.setItem("masinaN", myJSON);
+    }
+
+    return false;
+}
+
+</script>
+
+
+<!--
+Exercitiul 4
+
+a) Cheia masinaN contine obiectul masinii adaugate, transformat
+   in format JSON cu JSON.stringify().
+
+b) Linia mNoua.randNou = mNoua.randNou().toString();
+   transforma metoda randNou() intr-un text HTML, care poate fi
+   stocat in JSON. Fara aceasta transformare, functia randNou()
+   nu ar fi salvata, deoarece JSON.stringify() nu pastreaza functii.
+
+c) La reincarcare, mNoua.randNou se scrie fara paranteze deoarece
+   randNou nu mai este o functie, ci un text HTML care reprezinta
+   randul masinii in tabel.
+
+d) Dupa reincarcare apare doar ultima masina adaugata, deoarece
+   cheia masinaN este suprascrisa la fiecare adaugare, la fel ca
+   in varianta A.
+-->
+
+<a href="./index.html">Înapoi la Lab 8</a>
+</body>
+</html>
