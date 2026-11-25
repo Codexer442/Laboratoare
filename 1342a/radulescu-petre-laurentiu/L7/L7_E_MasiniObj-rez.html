@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Masini cu obiecte - rezolvare</title>
+
+    <style>
+        form {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 8em;
+        }
+    </style>
+
+    <script>
+        function loadMjs() {
+            let mJS = {
+                tip: "Dacia",
+                model: "Logan",
+                culoare: "verde",
+                anFab: 2012,
+                combustibil: "Benzina"
+            };
+
+            listaMasina(mJS, "mJS");
+        }
+
+        function listaMasina(m, idRezultat) {
+            let rezultat = "<ul>";
+
+            rezultat += "<li>Tip: " + m.tip + "</li>";
+            rezultat += "<li>Model: " + m.model + "</li>";
+            rezultat += "<li>Culoare: " + m.culoare + "</li>";
+            rezultat += "<li>An fabricatie: " + m.anFab + "</li>";
+            rezultat += "<li>Combustibil: " + m.combustibil + "</li>";
+
+            rezultat += "</ul>";
+
+            document.getElementById(idRezultat).innerHTML = rezultat;
+        }
+
+        function masinaDinFormular(s) {
+            let m = {
+                tip: document.getElementById("tip" + s).value,
+                model: document.getElementById("model" + s).value,
+                culoare: document.getElementById("culoare" + s).value,
+                anFab: Number(document.getElementById("anFab" + s).value),
+                combustibil: document.getElementById("combustibil" + s).value
+            };
+
+            return m;
+        }
+
+        function afiseaza(depozit, idRezultat) {
+            let m = depozit.getItem("masina");
+
+            if (m != null) {
+                m = JSON.parse(m);
+                listaMasina(m, idRezultat);
+            } else {
+                document.getElementById(idRezultat).innerHTML =
+                    "Nicio masina salvata.";
+            }
+        }
+
+        function salveazaMls() {
+            let m = masinaDinFormular("L");
+            localStorage.setItem("masina", JSON.stringify(m));
+            afiseaza(localStorage, "mls");
+        }
+
+        function salveazaMss() {
+            let m = masinaDinFormular("S");
+            sessionStorage.setItem("masina", JSON.stringify(m));
+            afiseaza(sessionStorage, "mss");
+        }
+
+        function sterge(depozit, idRezultat) {
+            depozit.removeItem("masina");
+            document.getElementById(idRezultat).innerHTML =
+                "Nicio masina salvata.";
+        }
+    </script>
+</head>
+
+<body onload="loadMjs(); afiseaza(localStorage, 'mls'); afiseaza(sessionStorage, 'mss');">
+
+    <h2>Masina JavaScript</h2>
+    <div id="mJS"></div>
+
+    <hr>
+
+    <h2>Masina Local Storage</h2>
+
+    <form onsubmit="salveazaMls(); return false;">
+        Tip:
+        <input type="text" id="tipL"><br><br>
+
+        Model:
+        <input type="text" id="modelL"><br><br>
+
+        Culoare:
+        <input type="text" id="culoareL"><br><br>
+
+        An fabricatie:
+        <input type="number" id="anFabL"><br><br>
+
+        Combustibil:
+        <input type="text" id="combustibilL"><br><br>
+
+        <input type="submit" value="Salveaza">
+        <input type="button" value="Sterge"
+               onclick="sterge(localStorage, 'mls')">
+    </form>
+
+    <div id="mls"></div>
+
+    <hr>
+
+    <h2>Masina Session Storage</h2>
+
+    <form onsubmit="salveazaMss(); return false;">
+        Tip:
+        <input type="text" id="tipS"><br><br>
+
+        Model:
+        <input type="text" id="modelS"><br><br>
+
+        Culoare:
+        <input type="text" id="culoareS"><br><br>
+
+        An fabricatie:
+        <input type="number" id="anFabS"><br><br>
+
+        Combustibil:
+        <input type="text" id="combustibilS"><br><br>
+
+        <input type="submit" value="Salveaza">
+        <input type="button" value="Sterge"
+               onclick="sterge(sessionStorage, 'mss')">
+    </form>
+
+    <div id="mss"></div>
+
+</body>
+</html>
