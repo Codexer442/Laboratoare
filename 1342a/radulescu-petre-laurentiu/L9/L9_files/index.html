@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorul 9</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8efff, #f3eaff);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+            color: #263c68;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .laboratoare {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            display: block;
+            padding: 22px 15px;
+            background-color: #f4f6fc;
+            border: 1px solid #e0e6f2;
+            border-radius: 14px;
+            text-decoration: none;
+            text-align: center;
+            color: #263c68;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            background-color: #263c68;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 7px 15px rgba(38, 60, 104, 0.2);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .back {
+            display: block;
+            margin: 30px auto 0;
+            width: fit-content;
+            padding: 12px 20px;
+            background-color: #263c68;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #405b91;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Laboratorul 9</h1>
+        <p class="subtitle">JavaScript, AJAX și JSON</p>
+
+        <div class="laboratoare">
+
+            <a href="L9_Melodii.html" class="card">
+                <h2>Gestiunea melodiilor</h2>
+                <p>Adăugare, modificare și ștergere melodii</p>
+            </a>
+
+            <a href="L9_Melodii2.html" class="card">
+                <h2>Gestiunea melodiilor - Bonus</h2>
+                <p>AJAX și Local Storage</p>
+            </a>
+
+            <a href="L9_GestiuneMasiniJSONfile.html" class="card">
+                <h2>Gestiunea mașinilor</h2>
+                <p>Gestionarea datelor despre mașini</p>
+            </a>
+
+        </div>
+
+        <a href="../index.html" class="back">
+            Înapoi la laboratoarele principale
+        </a>
+
+        <div class="footer">
+            Programarea aplicațiilor web – Laboratorul 9
+        </div>
+
+    </div>
+
+</body>
+</html>
